@@ -1,7 +1,14 @@
-# DBmanger
-能用的服务器管理包
+<?php
+/**
+ * Created by PhpStorm.
+ * User: kingmax
+ * Date: 16/4/21
+ * Time: 下午10:27
+ */
+require_once __DIR__ . "/autoload.php";
+require_once __DIR__ . "/../vendor/autoload.php";
 
-```php
+
 //这几行代码仅调试的时候需要,真正生产环境时就不需要了
 spl_autoload_register("auto_load_src");
 
@@ -37,4 +44,3 @@ echo $Jobs->paginate();
 foreach ($Jobs as $Job) {
     echo $Job->title.":".$Job->desc . "\n\n";
 }
-```

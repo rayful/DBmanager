@@ -1,0 +1,14 @@
+{
+    "name": "rayful/db-manager",
+    "description": "A very simple PHPClass to access your data and dataset in database. Design for MongoDB, compatible for Elasticsearch and MySQL.",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Kingmax Yang",
+            "email": "kingmaxyang@gmail.com"
+        }
+    ],
+    "require": {
+        "rayful/pagination": "^0.1.3"
+    }
+}
