@@ -81,7 +81,7 @@ abstract class DataSet implements \Iterator
         }
         return implode(",", $names);
     }
-    
+
     function __toArray()
     {
         $array = [];
@@ -315,6 +315,10 @@ abstract class DataSet implements \Iterator
         return $this;
     }
 
+    /**
+     * 这个用在根据ID精确找
+     * @param string $requestValue
+     */
     protected function _request_id($requestValue)
     {
         $this->find([
@@ -322,6 +326,10 @@ abstract class DataSet implements \Iterator
         ]);
     }
 
+    /**
+     * 这个用在传递ID集批量找
+     * @param array $requestValue
+     */
     protected function _request_ids(array $requestValue)
     {
         $this->find([
@@ -333,20 +341,33 @@ abstract class DataSet implements \Iterator
         ]);
     }
 
-    protected function _request_query($request)
+    /**
+     * 这个用在跨页全选,前端先通过getQuery()方法把当前搜索的query serialize()+base64_encode()传递过来，后端就能找回之前搜索的条件然后批量进行操作
+     * @param string $requestValue
+     */
+    protected function _request_query($requestValue)
     {
-        $this->find(unserialize(base64_decode($request)));
+        $this->find(unserialize(base64_decode($requestValue)));
     }
 
+    /**
+     * 这个用在前端指定每页显示多少个时有用
+     * @param $requestValue
+     */
     protected function _request_limit($requestValue)
     {
         $this->limit(intval($requestValue));
     }
 
+    /**
+     * 这个用在前端指定排序方法时有用,可指定排序字段还有是正序还是反序
+     * @param array $requestValue
+     * @example ['field'=>'used','type'=>'1'] ['field'=>'title','type'=>'-1']
+     */
     protected function _request_sort(array $requestValue)
     {
         $this->sort([
-            $requestValue['field'] => ($requestValue['type'] ? 1 : -1)
+            $requestValue['field'] => (intval($requestValue['type']) > 0 ? 1 : -1)
         ]);
     }
 

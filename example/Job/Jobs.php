@@ -24,4 +24,14 @@ class Jobs extends DataSet
     {
         return new Job();
     }
+
+    protected function _request_used($value)
+    {
+        $this->_query['used'] = boolval($value);
+    }
+
+    protected function _request_title($value)
+    {
+        $this->_query['title'] = strval($value);
+    }
 }
