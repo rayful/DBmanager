@@ -44,3 +44,36 @@ echo $Jobs->paginate();
 foreach ($Jobs as $Job) {
     echo $Job->title.":".$Job->desc . "\n\n";
 }
+
+//增
+$Job = new \Job\Job();
+$Job->title = "运营总监";
+$Job->desc = "需要高端人才";
+$Job->save();
+
+//查
+$id = $_REQUEST['id'];
+$Job = new \Job\Job($id);
+echo $Job->title;
+echo $Job->desc;
+
+//改
+$Job = new \Job\Job($id);
+if($Job->isExists()){
+    $Job->title = "技术总监";
+    $Job->save();
+}else{
+    throw new Exception("职位不存在.");
+}
+
+//删
+$Job = new \Job\Job($id);
+$Job->delete();
+
+//批量删
+$Jobs = new \Job\Jobs();
+$Jobs->find(['used'=>true])->sort(['sequence'=>1])->limit(3);
+echo $Jobs->paginate();
+foreach ($Jobs as $Job) {
+    $Job->delete();
+}
