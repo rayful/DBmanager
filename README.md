@@ -14,6 +14,7 @@ define("MONGO_DB", "xiyanghui");    //或者这里改成读取配置文件的方
 
 ### STEP2 生成子类,一个表需要建立三个类(建议配合PHPStorm来创建子类,将得到需要实现什么方法的提示)
 
+例子:数据库里面的Job表
 ---
 Database Manager,数据库管理器
 ---
@@ -39,7 +40,7 @@ class JobManager extends DBManager
 
 ```
 ---
-DataModel:数据结构的定义及部分简单操作
+DataModel:数据结构的定义及单条记录的操作
 ---
 建议目录:src/Job/Job.php
 ```php
@@ -179,7 +180,7 @@ if ($Job->isExists()) {
     throw new Exception("职位不存在.");
 }
 
-快捷修改
+//快捷修改
 $Job = new \Job\Job($id);
 $Job->update(['$set' => ['title' => $newTitle]]);
 
