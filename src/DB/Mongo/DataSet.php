@@ -366,9 +366,11 @@ abstract class DataSet implements \Iterator
      */
     protected function _request_sort(array $requestValue)
     {
-        $this->sort([
-            $requestValue['field'] => (intval($requestValue['type']) > 0 ? 1 : -1)
-        ]);
+        if (!empty($requestValue['field']) && !empty($requestValue['type'])) {
+            $this->sort([
+                $requestValue['field'] => (intval($requestValue['type']) > 0 ? 1 : -1)
+            ]);
+        }
     }
 
     /**
