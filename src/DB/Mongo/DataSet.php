@@ -193,7 +193,7 @@ abstract class DataSet implements \Iterator
 
     final public function findOne(array $query, array $sort = [])
     {
-        $this->find($query)->sort($sort)->limit(1)->rewind()->current();
+        return $this->find($query)->sort($sort)->limit(1)->rewind()->current();
     }
 
     final public function ensureIndexAndFind($query)

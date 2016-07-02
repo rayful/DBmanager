@@ -45,7 +45,12 @@ abstract class DBManager extends DBConfig
 
     public function ensureIndex($keys, $options = [])
     {
-        return $this->collection()->createIndex($keys, $options);
+        $Collection = $this->collection();
+        if(method_exists($Collection, "createIndex")){
+            return $Collection->createIndex($keys, $options);
+        }else if(method_exists($Collection, "ensureIndex")){
+            return $Collection->ensureIndex($keys, $options);
+        }
     }
 
     public function deleteIndex($keys)
