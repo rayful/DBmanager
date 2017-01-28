@@ -305,7 +305,7 @@ abstract class DataSet implements \Iterator
     public function setByRequest(array $request)
     {
         foreach ($request as $requestId => $requestValue) {
-            if ($requestId !== "") {
+            if ($requestValue !== "") {
                 $method = "_request_" . $requestId;
                 if (method_exists($this, $method)) {
                     $this->{$method}($requestValue);
