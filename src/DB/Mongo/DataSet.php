@@ -315,6 +315,14 @@ abstract class DataSet implements \Iterator
         return $this;
     }
 
+    final protected function appendQuery(array $query)
+    {
+        foreach ($query as $key => $value) {
+            $this->_query[$key] = $value;
+        }
+        return $this;
+    }
+
     /**
      * 这个用在根据ID精确找
      * @param string $requestValue
