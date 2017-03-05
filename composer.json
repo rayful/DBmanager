@@ -1,25 +1,6 @@
 {
-  "name": "rayful/db-manager",
-  "description": "A very simple PHPClass to access your data and dataset in database. Design for MongoDB, compatible for Elasticsearch and MySQL.",
-  "keyword": [
-    "MongoDB ORM",
-    "Simple",
-    "OO"
-  ],
-  "license": "MIT",
-  "authors": [
-    {
-      "name": "Kingmax Yang",
-      "email": "kingmaxyang@gmail.com"
+    "require": {
+        "rayful/pagination": "^1.0",
+        "rayful/toolkit": "1.2.3.1"
     }
-  ],
-  "require": {
-    "rayful/pagination": ">=1.0",
-    "rayful/toolkit": ">=1.0"
-  },
-  "autoload": {
-    "psr-4": {
-      "rayful\\": "src/"
-    }
-  }
 }
