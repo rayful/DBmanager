@@ -3,5 +3,11 @@
     "require": {
         "rayful/pagination": "^1.0",
         "rayful/toolkit": "1.2.3.1"
-    }
+    },
+    "autoload": {
+        "psr-4": {
+            "rayful\\": "src"
+        }
+    },
+    "license": "MIT"
 }
