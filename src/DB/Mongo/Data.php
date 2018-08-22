@@ -86,7 +86,11 @@ abstract class Data
         if (is_null($this->_id)) unset($this->_id);
         $data = $this->toArray();
         $result = $this->DBManager()->save($data);
-        $this->_id = $data['_id'];
+        if (isset($data['_id'])) {
+            $this->_id = $data['_id'];
+        } else if (isset($result['upserted'])) {
+            $this->_id = $result['upserted'];
+        }
         return $result;
     }
 
